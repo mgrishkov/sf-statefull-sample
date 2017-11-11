@@ -1,0 +1,98 @@
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.1Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging""","""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/Sample.UTILS.Logging
+ApplicationTypeName    : Sample.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":"C:\\Work\\_temp\\sf-s
+                         tatefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64","Config
+                         PackageName":"Config","ConfigPackageLinkFolder":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sa
+                         mple.Service.UTILS.Logging\\PackageRoot\\Config","DataPackageName":null,"DataPackageLinkFolder
+                         ":null,"LockFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bi
+                         n\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt","WorkingFolder":"C:\\Work\\_temp\
+                         \sf-statefull-sample\\src\\Sample.Service.UTILS.Logging","ServiceManifestName":"Sample.Service
+                         .UTILS.Logging","EntryPointType":"Main","DebugExePath":null,"DebugArguments":null,"DebugParame
+                         tersFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\
+                         Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:10.3497482
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App2\Sample.Service.UTILS.Logging.Code.1.0.0\Sample.Service.UTILS.Logging.exe'. Symbols loaded.
+An unhandled exception of type 'System.IO.FileLoadException' occurred in Unknown Module.
+Не удалось загрузить файл или сборку "System.Fabric, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null" либо одну из их зависимостей. Найденное определение манифеста сборки не соответствует ссылке на сборку. (Исключение из HRESULT: 0x80131040)
+
+The application has started.
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Something is taking too long, the application is still not ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:46.4212434

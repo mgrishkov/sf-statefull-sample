@@ -1,0 +1,337 @@
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\HubEx\HubEx.Service.UTILS.Logging\src\HubEx.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\HubEx\HubEx.Service.UTILS.Logging\src\HubEx.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.1Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging""","""ServiceManifestName""":"""HubEx.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/HubEx.UTILS.Logging
+ApplicationTypeName    : HubEx.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":"C:\\Work\\HubEx\\HubE
+                         x.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64",
+                         "ConfigPackageName":"Config","ConfigPackageLinkFolder":"C:\\Work\\HubEx\\HubEx.Service.UTILS.L
+                         ogging\\src\\HubEx.Service.UTILS.Logging\\PackageRoot\\Config","DataPackageName":null,"DataPac
+                         kageLinkFolder":null,"LockFile":"C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Serv
+                         ice.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt","WorkingFold
+                         er":"C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging","ServiceM
+                         anifestName":"HubEx.Service.UTILS.Logging","EntryPointType":"Main","DebugExePath":null,"DebugA
+                         rguments":null,"DebugParametersFile":"C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx
+                         .Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:10.0578299
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/HubEx.UTILS.Logging' -ErrorAction Stop
+The application has started.
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Something is taking too long, the application is still not ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:46.2517313
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/HubEx.UTILS.Logging' -ErrorAction Stop
+The application has started.
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is ready.
+
+The application is ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:38.2315474
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\HubEx\HubEx.Service.UTILS.Logging\src\HubEx.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\HubEx\HubEx.Service.UTILS.Logging\src\HubEx.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.1Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging""","""ServiceManifestName""":"""HubEx.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/HubEx.UTILS.Logging
+ApplicationTypeName    : HubEx.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":"C:\\Work\\HubEx\\HubE
+                         x.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64",
+                         "ConfigPackageName":"Config","ConfigPackageLinkFolder":"C:\\Work\\HubEx\\HubEx.Service.UTILS.L
+                         ogging\\src\\HubEx.Service.UTILS.Logging\\PackageRoot\\Config","DataPackageName":null,"DataPac
+                         kageLinkFolder":null,"LockFile":"C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Serv
+                         ice.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt","WorkingFold
+                         er":"C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx.Service.UTILS.Logging","ServiceM
+                         anifestName":"HubEx.Service.UTILS.Logging","EntryPointType":"Main","DebugExePath":null,"DebugA
+                         rguments":null,"DebugParametersFile":"C:\\Work\\HubEx\\HubEx.Service.UTILS.Logging\\src\\HubEx
+                         .Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:09.9272682
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/HubEx.UTILS.Logging' -ErrorAction Stop
+The application has started.
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/HubEx.UTILS.Logging/Logging is ready.
+
+The application is ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:42.3030738
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.1Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging""","""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/Sample.UTILS.Logging
+ApplicationTypeName    : Sample.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":"C:\\Work\\_temp\\sf-s
+                         tatefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64","Config
+                         PackageName":"Config","ConfigPackageLinkFolder":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sa
+                         mple.Service.UTILS.Logging\\PackageRoot\\Config","DataPackageName":null,"DataPackageLinkFolder
+                         ":null,"LockFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bi
+                         n\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt","WorkingFolder":"C:\\Work\\_temp\
+                         \sf-statefull-sample\\src\\Sample.Service.UTILS.Logging","ServiceManifestName":"Sample.Service
+                         .UTILS.Logging","EntryPointType":"Main","DebugExePath":null,"DebugArguments":null,"DebugParame
+                         tersFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\
+                         Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:10.3497482
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
+The application has started.
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Service Status:
+fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+
+Something is taking too long, the application is still not ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:46.4212434
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
