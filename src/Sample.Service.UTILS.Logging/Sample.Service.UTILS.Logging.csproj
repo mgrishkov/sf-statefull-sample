@@ -4,8 +4,8 @@
   <PropertyGroup>
       <TargetFramework>net462</TargetFramework>
       <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-      <RootNamespace>HubEx.Service.UTILS.Logging</RootNamespace>
-      <AssemblyName>HubEx.Service.UTILS.Logging</AssemblyName>
+      <RootNamespace>Sample.Service.UTILS.Logging</RootNamespace>
+      <AssemblyName>Sample.Service.UTILS.Logging</AssemblyName>
       <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
       <OutputType>Exe</OutputType>
       <Platforms>AnyCPU;x64</Platforms>
