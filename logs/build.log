@@ -2,38 +2,20 @@ Restoring NuGet packages...
 To prevent NuGet from restoring packages during build, open the Visual Studio Options dialog, click on the Package Manager node and uncheck 'Allow NuGet to download missing packages during build.'
 Committing restore...
 Assets file has not changed. Skipping assets file writing. Path: C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging.Abstractions\obj\project.assets.json
-Restore completed in 13,77 ms for C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging.Abstractions\Sample.Service.UTILS.Logging.Abstractions.csproj.
+Restore completed in 15,15 ms for C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging.Abstractions\Sample.Service.UTILS.Logging.Abstractions.csproj.
 Committing restore...
 Assets file has not changed. Skipping assets file writing. Path: C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\obj\project.assets.json
-Restore completed in 2,51 ms for C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\Sample.Service.UTILS.Logging.csproj.
-1>------ Build started: Project: Sample.Service.UTILS.Logging, Configuration: Debug x64 ------
-1>Target _HandlePackageFileConflicts:
-1>  Encountered conflict between 'Reference:C:\Users\grishkov.mn\.nuget\packages\system.runtime\4.3.0\ref\net462\System.Runtime.dll' and 'Reference:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\ref\System.Runtime.dll'.  Choosing 'Reference:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\ref\System.Runtime.dll' because AssemblyVersion '4.1.2.0' is greater than '4.1.1.0'.
-1>  Encountered conflict between 'CopyLocal:C:\Users\grishkov.mn\.nuget\packages\system.runtime\4.3.0\lib\net462\System.Runtime.dll' and 'CopyLocal:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\lib\System.Runtime.dll'.  Choosing 'CopyLocal:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\lib\System.Runtime.dll' because AssemblyVersion '4.1.2.0' is greater than '4.1.1.0'.
-1>Target GenerateTargetFrameworkMonikerAttribute:
-1>  Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
-1>Target CoreGenerateAssemblyInfo:
-1>  Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
-1>Target CoreCompile:
-1>  Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
-1>Target _CopyFilesMarkedCopyLocal:
-1>  Touching "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\obj\x64\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.csproj.CopyComplete".
-1>Target _CopyAppConfigFile:
-1>  Copying file from "obj\x64\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.csproj.Sample.Service.UTILS.Logging.exe.config" to "bin\x64\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.exe.config".
-1>Target CopyFilesToOutputDirectory:
-1>  Sample.Service.UTILS.Logging -> C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\x64\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.exe
+Restore completed in 2,76 ms for C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\Sample.Service.UTILS.Logging.csproj.
+1>------ Build started: Project: Sample.UTILS.Logging, Configuration: Debug x64 ------
+1>Target PrepareForBuild:
+1>  Creating directory "bin\Debug\".
 1>Target CleanupEmptyRefsFolder:
-1>  Directory "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\x64\Debug\net462\win7-x64\refs" doesn't exist. Skipping.
-2>------ Build started: Project: Sample.UTILS.Logging, Configuration: Debug x64 ------
-2>Target PrepareForBuild:
-2>  Creating directory "bin\Debug\".
-2>Target CleanupEmptyRefsFolder:
-2>  Removing directory "C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\bin\Debug\".
-3>------ Deploy started: Project: Sample.UTILS.Logging, Configuration: Debug x64 ------
-3>Started executing script 'GetApplicationExistence'.
+1>  Removing directory "C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\bin\Debug\".
+2>------ Deploy started: Project: Sample.UTILS.Logging, Configuration: Debug x64 ------
+2>Started executing script 'GetApplicationExistence'.
 -------- Package started: Project: Sample.UTILS.Logging, Configuration: Debug x64 ------
-3>Finished executing script 'GetApplicationExistence'.
-3>Time elapsed: 00:00:05.2950315
+2>Finished executing script 'GetApplicationExistence'.
+2>Time elapsed: 00:00:05.5403449
 Target PrepareForBuild:
   Creating directory "bin\Debug\".
 Target CleanupEmptyRefsFolder:
@@ -43,11 +25,16 @@ Target PackageServices:
   Copying file from "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\PackageRoot\Config\Settings.xml" to "C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug\Sample.Service.UTILS.Logging\Config\Settings.xml".
   Copying file from "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\PackageRoot\ServiceManifest.xml" to "C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug\Sample.Service.UTILS.Logging\ServiceManifest.xml".
 Target PackagePublishableServices:
+  Target _WaitForServiceFabricApplicationCleanupBeforeBuild:
+    Waiting for output folder cleanup...
+    Output folder cleanup has been completed.
   Target _HandlePackageFileConflicts:
     Encountered conflict between 'Reference:C:\Users\grishkov.mn\.nuget\packages\system.runtime\4.3.0\ref\net462\System.Runtime.dll' and 'Reference:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\ref\System.Runtime.dll'.  Choosing 'Reference:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\ref\System.Runtime.dll' because AssemblyVersion '4.1.2.0' is greater than '4.1.1.0'.
     Encountered conflict between 'CopyLocal:C:\Users\grishkov.mn\.nuget\packages\system.runtime\4.3.0\lib\net462\System.Runtime.dll' and 'CopyLocal:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\lib\System.Runtime.dll'.  Choosing 'CopyLocal:C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\\net461\lib\System.Runtime.dll' because AssemblyVersion '4.1.2.0' is greater than '4.1.1.0'.
   Target GenerateTargetFrameworkMonikerAttribute:
     Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+  Target CoreGenerateAssemblyInfo:
+    Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
   Target CoreCompile:
     Using shared compilation with compiler from directory: C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\Roslyn
   Target _CopyFilesMarkedCopyLocal:
@@ -60,13 +47,6 @@ Target PackagePublishableServices:
     Copying file from "obj\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.exe" to "bin\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.exe".
     Sample.Service.UTILS.Logging -> C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.exe
     Copying file from "obj\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.pdb" to "bin\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.pdb".
-  Target IncrementalClean:
-    Deleting file "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\obj\Debug\net462\win7-x64\Sample.Service.UTILS.Logging.csproj.HubEx.Service.UTILS.Logging.exe.config".
-    Deleting file "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\obj\Debug\net462\win7-x64\HubEx.Service.UTILS.Logging.exe".
-    Deleting file "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\obj\Debug\net462\win7-x64\HubEx.Service.UTILS.Logging.pdb".
-    Deleting file "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\Debug\net462\win7-x64\HubEx.Service.UTILS.Logging.exe.config".
-    Deleting file "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\Debug\net462\win7-x64\HubEx.Service.UTILS.Logging.exe".
-    Deleting file "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\Debug\net462\win7-x64\HubEx.Service.UTILS.Logging.pdb".
   Target CleanupEmptyRefsFolder:
     Directory "C:\Work\_temp\sf-statefull-sample\src\Sample.Service.UTILS.Logging\bin\Debug\net462\win7-x64\refs" doesn't exist. Skipping.
   Target PrepareForPublish:
@@ -197,16 +177,18 @@ Target PackageApplication:
   Copying file from "C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\ApplicationPackageRoot\ApplicationManifest.xml" to "C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug\ApplicationManifest.xml".
 Target CollectPackageFiles:
   Sample.UTILS.Logging -> C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug
--------- Package: Project: Sample.UTILS.Logging succeeded, Time elapsed: 00:00:02.3646247 --------
-3>Started executing script 'Deploy-FabricApplication.ps1'.
-3>. 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\Scripts\Deploy-FabricApplication.ps1' -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -PublishProfileFile 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\Local.1Node.xml' -DeployOnly:$true -ApplicationParameter:@{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging""","""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior 'None' -OverwriteBehavior 'Always' -SkipPackageValidation:$true -ErrorAction Stop
-3>Copying application to image store...
-3>Upload to Image Store succeeded
-3>Registering application type...
-3>Register application type succeeded
-3>Removing application package from image store...
-3>Remove application package succeeded
-3>Finished executing script 'Deploy-FabricApplication.ps1'.
-3>Time elapsed: 00:00:18.4733698
-========== Build: 2 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+-------- Package: Project: Sample.UTILS.Logging succeeded, Time elapsed: 00:00:03.4140259 --------
+2>Started executing script 'Deploy-FabricApplication.ps1'.
+2>. 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\Scripts\Deploy-FabricApplication.ps1' -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -PublishProfileFile 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\Local.1Node.xml' -DeployOnly:$true -ApplicationParameter:@{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging""","""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -UnregisterUnusedApplicationVersionsAfterUpgrade $false -OverrideUpgradeBehavior 'None' -OverwriteBehavior 'Always' -SkipPackageValidation:$true -ErrorAction Stop
+2>Application Type  Sample.UTILS.LoggingType  and Version  1.0.0  was already registered with Cluster, unregistering it...
+2>Unregister application type succeeded.
+2>Copying application to image store...
+2>Upload to Image Store succeeded
+2>Registering application type...
+2>Register application type succeeded
+2>Removing application package from image store...
+2>Remove application package succeeded
+2>Finished executing script 'Deploy-FabricApplication.ps1'.
+2>Time elapsed: 00:00:21.7473466
+========== Build: 1 succeeded, 0 failed, 2 up-to-date, 0 skipped ==========
 ========== Deploy: 1 succeeded, 0 failed, 0 skipped ==========
