@@ -1,4 +1,4 @@
-﻿namespace Sample.Service.UTILS.Logging.Enums
+﻿namespace Sample.Service.UTILS.Logging.Abstractions.Enums
 {
     public enum State
     {

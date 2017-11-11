@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.ServiceFabric.Data;
 using Sample.Service.Logging.Abstractions.Interfaces;
 using Sample.Service.UTILS.Logging.Abstractions.Constants;
 using Sample.Service.UTILS.Logging.Abstractions.Data;
-using Sample.Service.UTILS.Logging.Enums;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
+using Sample.Service.UTILS.Logging.Abstractions.Enums;
 
 namespace Sample.Service.UTILS.Logging
 {
@@ -19,11 +20,12 @@ namespace Sample.Service.UTILS.Logging
     public sealed class LoggingService : StatefulService, ILoggingService
     {
 
-        private const int QUEUE_LENGTH            = 10000;
+        private const int MAX_QUEUE_LENGTH        = 10000;
         private const int FAIL_ATTEMPTS_THRESHOLD = 2;
 
-        private readonly TimeSpan _defaultDelay;
-        private readonly TimeSpan _delayAfterProcessingFails;
+        private readonly SemaphoreSlim _signal;
+
+        private readonly Queue<TimeSpan> _delays;
 
         private int _failProcessingAttemptsCount;
         private CancellationToken _cancellationToken;
@@ -31,33 +33,27 @@ namespace Sample.Service.UTILS.Logging
 
         public State ProcessingState { get; private set; }
         public DateTime NextRun      { get; private set; }
+        public long CurrentQueueLength => _queue?.Count ?? 0;
+        public long MaxQueueLength => MAX_QUEUE_LENGTH;
 
 
         public LoggingService(StatefulServiceContext context): base(context)
         {
             ProcessingState = State.Warming;
+            _signal = new SemaphoreSlim(0);
+            _delays = new Queue<TimeSpan>();
 
-            _defaultDelay              = TimeSpan.FromSeconds(1);
-            _delayAfterProcessingFails = TimeSpan.FromSeconds(60);
+            _delays.Enqueue(TimeSpan.FromMinutes( 1));
+            _delays.Enqueue(TimeSpan.FromMinutes( 5));
+            _delays.Enqueue(TimeSpan.FromMinutes(10));
+            _delays.Enqueue(TimeSpan.FromMinutes(15));
         }
 
-        /// <summary>
-        /// Optional override to create listeners (e.g., HTTP, Service Remoting, WCF, etc.) for this service replica to handle client or user requests.
-        /// </summary>
-        /// <remarks>
-        /// For more information on service communication, see https://aka.ms/servicefabricservicecommunication
-        /// </remarks>
-        /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
             return new ServiceReplicaListener[0];
         }
 
-        /// <summary>
-        /// This is the main entry point for your service replica.
-        /// This method executes when this replica of your service becomes primary and has write status.
-        /// </summary>
-        /// <param name="cancellationToken">Canceled when Service Fabric needs to shut down this service replica.</param>
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
             _cancellationToken = cancellationToken;
@@ -66,12 +62,16 @@ namespace Sample.Service.UTILS.Logging
 
             while (true)
             {
+                //Waiting for signal resolution
+                await _signal.WaitAsync(cancellationToken)
+                    .ConfigureAwait(false);
+
+                //Waiting for better condition to messages processig
+                await WaitAsync();
+
                 cancellationToken.ThrowIfCancellationRequested();
 
-                if(_queue.Count > 0)
-                    await ProcessAsync();
-
-                await WaitAsync();
+                await ProcessAsync();
             }
         }
 
@@ -87,31 +87,38 @@ namespace Sample.Service.UTILS.Logging
                 await tran.CommitAsync();
             }
 
-            await CleanseAsync();
+            //We have to remove old messages in case of queue overflow condition
+            if (_queue.Count > MAX_QUEUE_LENGTH)
+                await TrimAsync();
+
+
+            _signal.Release();
         }
 
-        private async Task WaitAsync()
+        private Task WaitAsync()
         {
-            ProcessingState = State.Idle;
+            if (_failProcessingAttemptsCount < FAIL_ATTEMPTS_THRESHOLD)
+                return Task.CompletedTask;
 
-            var delay = _defaultDelay;
-            if (_failProcessingAttemptsCount >= FAIL_ATTEMPTS_THRESHOLD)
-            {
-                delay = _delayAfterProcessingFails;
-                _failProcessingAttemptsCount = 0;
+            var delay = _delays.Dequeue();
+            _failProcessingAttemptsCount = 0;
 
-                ProcessingState = State.Freeze;
-            }
+            ProcessingState = State.Freeze;
+
             NextRun = DateTime.UtcNow.Add(delay);
+            ServiceEventSource.Current.ServiceMessage(this.Context, "Processing has been freezed due to all attempts expended. Next round at {0}.", NextRun);
 
-            if(ProcessingState == State.Freeze)
-                ServiceEventSource.Current.ServiceMessage(this.Context, "Processing has been freezed due to all attempts has been expended. Next round at {0}.", NextRun);
+            //return delay back to the queue
+            _delays.Enqueue(delay);
 
-            await Task.Delay(delay, _cancellationToken);
+            return Task.Delay(delay, _cancellationToken);
         }
 
         private async Task ProcessAsync()
         {
+            if (_queue.Count == 0)
+                return;
+
             ProcessingState = State.Processing;
 
             using (var tx = StateManager.CreateTransaction())
@@ -119,24 +126,30 @@ namespace Sample.Service.UTILS.Logging
                 var message = await _queue.TryDequeueAsync(tx, _cancellationToken);
 
                 if (!message.HasValue)
-                    await tx.CommitAsync();
+                    tx.Abort();
 
                 if (await TryProcessMessageAsync(message.Value))
                     await tx.CommitAsync();
                 else
                     tx.Abort();
             }
+
+            //Synchronize message count in queue and semaphore
+            var delta = Convert.ToInt32(_queue.Count - _signal.CurrentCount);
+
+            if (delta > 0)
+                _signal.Release(delta);
         }
 
-        private async Task CleanseAsync()
+        private async Task TrimAsync(int trimPercentage = 1)
         {
-            if (_queue.Count <= QUEUE_LENGTH)
-                return;
-
             ProcessingState = State.Cleansing;
+
+            var toBeRemoved = MAX_QUEUE_LENGTH * trimPercentage / 100;
+
             using (var tx = StateManager.CreateTransaction())
             {
-                for(var i = 0; i < QUEUE_LENGTH / 100; i++)
+                for(var i = 0; i < toBeRemoved; i++)
                 {
                     var message = await _queue.TryDequeueAsync(tx, _cancellationToken);
 
@@ -155,14 +168,13 @@ namespace Sample.Service.UTILS.Logging
 
             try
             {
-                _failProcessingAttemptsCount = 0;
-
                 //TODO Logger implementation must be here 
                 await Task.Factory.StartNew(() =>
                 {
                     ServiceEventSource.Current.ServiceMessage(this.Context, Newtonsoft.Json.JsonConvert.SerializeObject(message));
                 }, _cancellationToken);
 
+                _failProcessingAttemptsCount = 0;
 
                 return await Task.FromResult(true);
             }
