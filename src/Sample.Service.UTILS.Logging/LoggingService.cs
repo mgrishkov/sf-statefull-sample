@@ -23,10 +23,13 @@ namespace Sample.Service.UTILS.Logging
 
         private const int    MAX_QUEUE_LENGTH        = 10000;
         private const int    FAIL_ATTEMPTS_THRESHOLD = 2;
-        private const string SOURCE_ID               = "Service.Logging";
+        private const string PROCESSING_SOURCE_ID    = "Service.Message.Processing";
+        private const string RECIVING_SOURCE_ID      = "Service.Message.Receiving";
         private const string PROCESSING              = "Processing";
         private const string CLEANSING               = "Cleansing";
         private const string FREEZING                = "Freezing";
+        private const string RECEIVED                = "Recived";
+        private const string REJECTED                = "Rejected";
 
         private readonly SemaphoreSlim   _signal;
         private readonly Queue<TimeSpan> _delays;
@@ -60,6 +63,7 @@ namespace Sample.Service.UTILS.Logging
 
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
+            ServiceEventSource.Current.ServiceMessage(Context, "Started");
             _cancellationToken = cancellationToken;
 
             _queue = await StateManager.GetOrAddAsync<IReliableConcurrentQueue<MessageData>>(ServiceConstants.APPLICATION_LOG_QUEUE);
@@ -81,22 +85,39 @@ namespace Sample.Service.UTILS.Logging
 
         public async Task EnqueueAsync(MessageData message)
         {
-            if(message == null)
-                throw new ArgumentNullException(nameof(message));
+            try
+            {
+                if (message == null)
+                    throw new ArgumentNullException(nameof(message));
 
-            using (var tran = StateManager.CreateTransaction())
-            {               
-                await _queue.EnqueueAsync(tran, message, _cancellationToken);
-                
-                await tran.CommitAsync();
+                using (var tran = StateManager.CreateTransaction())
+                {
+                    await _queue.EnqueueAsync(tran, message, _cancellationToken);
+
+                    await tran.CommitAsync();
+                }
+
+                var description = $"Message recived. Queue length {_queue.Count},";
+
+                var healthInformation = new HealthInformation(RECIVING_SOURCE_ID, RECEIVED, HealthState.Ok) { Description = description };
+                this.Partition.ReportReplicaHealth(healthInformation);
+
+                //We have to remove old messages in case of queue overflow condition
+                if (_queue.Count > MAX_QUEUE_LENGTH)
+                    await TrimAsync();
+
+                _signal.Release();
             }
+            catch(Exception ex)
+            {
+                var description = $"Message rejected due to {ex.Message}.";
 
-            //We have to remove old messages in case of queue overflow condition
-            if (_queue.Count > MAX_QUEUE_LENGTH)
-                await TrimAsync();
+                ServiceEventSource.Current.ServiceMessage(this.Context, description);
+                var healthInformation = new HealthInformation(RECIVING_SOURCE_ID, RECEIVED, HealthState.Warning) { Description = description };
+                this.Partition.ReportReplicaHealth(healthInformation);
 
-
-            _signal.Release();
+                throw;
+            }
         }
 
         private Task WaitAsync()
@@ -114,7 +135,7 @@ namespace Sample.Service.UTILS.Logging
             var description = $"Processing has been freezed due to all attempts were expended. Next round at {NextRun}.";
 
             ServiceEventSource.Current.ServiceMessage(this.Context, description);
-            var healthInformation = new HealthInformation(SOURCE_ID, FREEZING, HealthState.Warning) { Description = description, TimeToLive = delay, RemoveWhenExpired = true };
+            var healthInformation = new HealthInformation(PROCESSING_SOURCE_ID, FREEZING, HealthState.Warning) { Description = description, TimeToLive = delay, RemoveWhenExpired = true };
             this.Partition.ReportReplicaHealth(healthInformation);
 
             //return delay back to the queue
@@ -171,7 +192,7 @@ namespace Sample.Service.UTILS.Logging
 
             var description = $"Message queue has been trimmed up to {MAX_QUEUE_LENGTH} items. {toBeRemoved} items has been cleanssed.";
 
-            var healthInformation = new HealthInformation(SOURCE_ID, CLEANSING, HealthState.Warning) { Description = description, TimeToLive = TimeSpan.FromMinutes(1), RemoveWhenExpired = true };
+            var healthInformation = new HealthInformation(PROCESSING_SOURCE_ID, CLEANSING, HealthState.Warning) { Description = description, TimeToLive = TimeSpan.FromMinutes(1), RemoveWhenExpired = true };
             this.Partition.ReportReplicaHealth(healthInformation);
         }
 
@@ -191,7 +212,7 @@ namespace Sample.Service.UTILS.Logging
                 _failProcessingAttemptsCount = 0;
 
                 //report that process completed well
-                var healthInformation = new HealthInformation(SOURCE_ID, PROCESSING, HealthState.Ok) { Description = "Message processed successfully" };
+                var healthInformation = new HealthInformation(PROCESSING_SOURCE_ID, PROCESSING, HealthState.Ok) { Description = "Message processed successfully" };
                 this.Partition.ReportReplicaHealth(healthInformation);
 
                 return await Task.FromResult(true);
@@ -203,7 +224,7 @@ namespace Sample.Service.UTILS.Logging
                 ServiceEventSource.Current.ServiceMessage(this.Context, $"Unable to process message due to [{ex.Message}]. Attempt {_failProcessingAttemptsCount} of {FAIL_ATTEMPTS_THRESHOLD}.");
 
                 var description = $"Unable to process message. Attempt {_failProcessingAttemptsCount} of {FAIL_ATTEMPTS_THRESHOLD}.";
-                var healthInformation = new HealthInformation(SOURCE_ID, PROCESSING, HealthState.Ok) { Description = description };
+                var healthInformation = new HealthInformation(PROCESSING_SOURCE_ID, PROCESSING, HealthState.Ok) { Description = description };
                 this.Partition.ReportReplicaHealth(healthInformation);
                 
 

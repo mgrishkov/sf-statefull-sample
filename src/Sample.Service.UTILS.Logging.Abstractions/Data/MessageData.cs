@@ -15,7 +15,7 @@ namespace Sample.Service.UTILS.Logging.Abstractions.Data
         public string   ExceptionMessages { get; set; }
         public string   StackTrace        { get; set; }
         public string   TraceIdentifier   { get; set; }
-        public IEnumerable<string> Tags { get; set; }
+        public IEnumerable<string> Tags   { get; set; }
 
         public MessageData()
         {
