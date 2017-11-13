@@ -11,6 +11,7 @@ using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Sample.Service.UTILS.Logging.Abstractions.Enums;
+using System.Fabric.Health;
 
 namespace Sample.Service.UTILS.Logging
 {
@@ -20,15 +21,18 @@ namespace Sample.Service.UTILS.Logging
     public sealed class LoggingService : StatefulService, ILoggingService
     {
 
-        private const int MAX_QUEUE_LENGTH        = 10000;
-        private const int FAIL_ATTEMPTS_THRESHOLD = 2;
+        private const int    MAX_QUEUE_LENGTH        = 10000;
+        private const int    FAIL_ATTEMPTS_THRESHOLD = 2;
+        private const string SOURCE_ID               = "Service.Logging";
+        private const string PROCESSING              = "Processing";
+        private const string CLEANSING               = "Cleansing";
+        private const string FREEZING                = "Freezing";
 
-        private readonly SemaphoreSlim _signal;
-
+        private readonly SemaphoreSlim   _signal;
         private readonly Queue<TimeSpan> _delays;
 
-        private int _failProcessingAttemptsCount;
-        private CancellationToken _cancellationToken;
+        private int                                   _failProcessingAttemptsCount;
+        private CancellationToken                     _cancellationToken;
         private IReliableConcurrentQueue<MessageData> _queue;
 
         public State ProcessingState { get; private set; }
@@ -106,7 +110,12 @@ namespace Sample.Service.UTILS.Logging
             ProcessingState = State.Freeze;
 
             NextRun = DateTime.UtcNow.Add(delay);
-            ServiceEventSource.Current.ServiceMessage(this.Context, "Processing has been freezed due to all attempts expended. Next round at {0}.", NextRun);
+
+            var description = $"Processing has been freezed due to all attempts were expended. Next round at {NextRun}.";
+
+            ServiceEventSource.Current.ServiceMessage(this.Context, description);
+            var healthInformation = new HealthInformation(SOURCE_ID, FREEZING, HealthState.Warning) { Description = description, TimeToLive = delay, RemoveWhenExpired = true };
+            this.Partition.ReportReplicaHealth(healthInformation);
 
             //return delay back to the queue
             _delays.Enqueue(delay);
@@ -154,16 +163,21 @@ namespace Sample.Service.UTILS.Logging
                     var message = await _queue.TryDequeueAsync(tx, _cancellationToken);
 
                     if (message.HasValue && message.Value != null)
-                        ServiceEventSource.Current.ServiceMessage(this.Context, "Message has been cleanced due to queue oveflow. Message: {0}", Newtonsoft.Json.JsonConvert.SerializeObject(message.Value));
+                        ServiceEventSource.Current.ServiceMessage(this.Context, "Message queue has been trimmed due to queue oveflow. Message: {0}", Newtonsoft.Json.JsonConvert.SerializeObject(message.Value));
                 }
 
                 await tx.CommitAsync();
             }
+
+            var description = $"Message queue has been trimmed up to {MAX_QUEUE_LENGTH} items. {toBeRemoved} items has been cleanssed.";
+
+            var healthInformation = new HealthInformation(SOURCE_ID, CLEANSING, HealthState.Warning) { Description = description, TimeToLive = TimeSpan.FromMinutes(1), RemoveWhenExpired = true };
+            this.Partition.ReportReplicaHealth(healthInformation);
         }
 
         private async Task<bool> TryProcessMessageAsync(MessageData message)
         {
-            if(message == null)
+            if (message == null)
                 return await Task.FromResult(true);
 
             try
@@ -176,13 +190,22 @@ namespace Sample.Service.UTILS.Logging
 
                 _failProcessingAttemptsCount = 0;
 
+                //report that process completed well
+                var healthInformation = new HealthInformation(SOURCE_ID, PROCESSING, HealthState.Ok) { Description = "Message processed successfully" };
+                this.Partition.ReportReplicaHealth(healthInformation);
+
                 return await Task.FromResult(true);
             }
             catch (Exception ex)
             {
                 _failProcessingAttemptsCount++;
 
-                ServiceEventSource.Current.ServiceMessage(this.Context, "Unable to process message due to [{0}]. Attempt {1} of {2}.", ex.Message, _failProcessingAttemptsCount, FAIL_ATTEMPTS_THRESHOLD);
+                ServiceEventSource.Current.ServiceMessage(this.Context, $"Unable to process message due to [{ex.Message}]. Attempt {_failProcessingAttemptsCount} of {FAIL_ATTEMPTS_THRESHOLD}.");
+
+                var description = $"Unable to process message. Attempt {_failProcessingAttemptsCount} of {FAIL_ATTEMPTS_THRESHOLD}.";
+                var healthInformation = new HealthInformation(SOURCE_ID, PROCESSING, HealthState.Ok) { Description = description };
+                this.Partition.ReportReplicaHealth(healthInformation);
+                
 
                 return await Task.FromResult(false);
             }
