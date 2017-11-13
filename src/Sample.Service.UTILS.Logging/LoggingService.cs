@@ -113,7 +113,7 @@ namespace Sample.Service.UTILS.Logging
                 var description = $"Message rejected due to {ex.Message}.";
 
                 ServiceEventSource.Current.ServiceMessage(this.Context, description);
-                var healthInformation = new HealthInformation(RECIVING_SOURCE_ID, RECEIVED, HealthState.Warning) { Description = description };
+                var healthInformation = new HealthInformation(RECIVING_SOURCE_ID, REJECTED, HealthState.Warning) { Description = description };
                 this.Partition.ReportReplicaHealth(healthInformation);
 
                 throw;
