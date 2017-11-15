@@ -1,5 +1,3 @@
-Started executing script 'Publish-NewServiceFabricApplication'.
-[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.1Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging""","""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
 Creating application...
 
 
@@ -7,16 +5,12 @@ ApplicationName        : fabric:/Sample.UTILS.Logging
 ApplicationTypeName    : Sample.UTILS.LoggingType
 ApplicationTypeVersion : 1.0.0
 ApplicationParameters  : { "TargetReplicaSetSize" = "1";
-                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":"C:\\Work\\_temp\\sf-s
-                         tatefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64","Config
-                         PackageName":"Config","ConfigPackageLinkFolder":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sa
-                         mple.Service.UTILS.Logging\\PackageRoot\\Config","DataPackageName":null,"DataPackageLinkFolder
-                         ":null,"LockFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bi
-                         n\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt","WorkingFolder":"C:\\Work\\_temp\
-                         \sf-statefull-sample\\src\\Sample.Service.UTILS.Logging","ServiceManifestName":"Sample.Service
-                         .UTILS.Logging","EntryPointType":"Main","DebugExePath":null,"DebugArguments":null,"DebugParame
-                         tersFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\
-                         Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"}]";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":null,"ConfigPackageNam
+                         e":null,"ConfigPackageLinkFolder":null,"DataPackageName":null,"DataPackageLinkFolder":null,"Lo
+                         ckFile":null,"WorkingFolder":null,"ServiceManifestName":"Sample.Service.UTILS.Logging","EntryP
+                         ointType":"Main","DebugExePath":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Profe
+                         ssional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe","DebugArguments":" {e1c2379b-78
+                         25-4a7d-97f4-1934abdfbe2a} -p [ProcessId] -tid [ThreadId]","DebugParametersFile":null}]";
                          "MinReplicaSetSize" = "1";
                          "PartitionCount" = "1" }
 
@@ -24,14 +18,21 @@ Create application succeeded.
 
 
 Finished executing script 'Publish-NewServiceFabricApplication'.
-Time elapsed: 00:00:10.3072534
+Time elapsed: 00:00:10.1415403
 Started executing script 'Get-ServiceFabricApplicationStatus'.
 [void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
 'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Cannot find or open the PDB file.
-'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App4\Sample.Service.UTILS.Logging.Code.1.0.0\Sample.Service.UTILS.Logging.exe'. Symbols loaded.
-An unhandled exception of type 'System.IO.FileLoadException' occurred in Unknown Module.
-Не удалось загрузить файл или сборку "System.Fabric, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null" либо одну из их зависимостей. Найденное определение манифеста сборки не соответствует ссылке на сборку. (Исключение из HRESULT: 0x80131040)
-
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Sample.Service.UTILS.Logging.exe'. Symbols loaded.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Fabric\v4.0_6.0.0.0__31bf3856ad364e35\System.Fabric.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Services.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\Microsoft.ServiceFabric.Data.Interfaces\v4.0_5.0.0.0__31bf3856ad364e35\Microsoft.ServiceFabric.Data.Interfaces.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Sample.Service.UTILS.Logging.Abstractions.dll'. Symbols loaded.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Services.Remoting.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Internal.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Numerics\v4.0_4.0.0.0__b77a5c561934e089\System.Numerics.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Fabric.Strings\v4.0_6.0.0.0__31bf3856ad364e35\System.Fabric.Strings.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Cannot find or open the PDB file.
 The application has started.
 Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
@@ -39,18 +40,48 @@ fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Data.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code\Microsoft.ServiceFabric.Data.Impl.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code\System.Fabric.BackupRestore.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Diagnostics.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_ru_b77a5c561934e089\mscorlib.resources.dll'. Module was built without symbols.
+Exception thrown: 'System.Runtime.InteropServices.COMException' in Microsoft.ServiceFabric.Data.Impl.dll
+Exception thrown: 'System.Collections.Generic.KeyNotFoundException' in mscorlib.dll
 Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+Exception thrown: 'System.Runtime.InteropServices.COMException' in Microsoft.ServiceFabric.Data.Impl.dll
+Exception thrown: 'System.Collections.Generic.KeyNotFoundException' in mscorlib.dll
+Exception thrown: 'System.Collections.Generic.KeyNotFoundException' in mscorlib.dll
+Exception thrown: 'System.Runtime.InteropServices.COMException' in Microsoft.ServiceFabric.Data.Impl.dll
+Exception thrown: 'System.Runtime.InteropServices.COMException' in System.Fabric.dll
+Exception thrown: 'System.Fabric.FabricTransientException' in Microsoft.ServiceFabric.Data.Impl.dll
+Exception thrown: 'System.Fabric.FabricTransientException' in Microsoft.ServiceFabric.Data.Impl.dll
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Serialization.dll'. Cannot find or open the PDB file.
+Exception thrown: 'System.IO.FileLoadException' in Microsoft.ServiceFabric.Services.dll
+Managed Debugging Assistant 'FatalExecutionEngineError' 
+В среде выполнения обнаружена критическая ошибка. Ошибка произошла по адресу 0x6d6ad426 в потоке 0x2ddc. Код ошибки 0x80131623. Она может быть вызвана ошибкой в CLR или в небезопасных либо не поддающихся проверке фрагментах пользовательского кода. Обычно источниками таких ошибок бывают ошибки упаковки, допускаемые пользователями при COM-взаимодействии, либо PInvoke, повредивший стек.
 
 Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+fabric:/Sample.UTILS.Logging/Logging is ready.
 
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+The application is ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:12.1353924
+The thread 0x3980 has exited with code 0 (0x0).
+The thread 0x7e68 has exited with code 0 (0x0).
+An unhandled exception of type 'System.ExecutionEngineException' occurred in mscorlib.dll
 
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
+The program '[12800] Sample.Service.UTILS.Logging.exe' has exited with code -2146232797 (0x80131623).
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Sample.Service.UTILS.Logging.exe'. Symbols loaded.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Fabric\v4.0_6.0.0.0__31bf3856ad364e35\System.Fabric.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Services.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\Microsoft.ServiceFabric.Data.Interfaces\v4.0_5.0.0.0__31bf3856ad364e35\Microsoft.ServiceFabric.Data.Interfaces.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Sample.Service.UTILS.Logging.Abstractions.dll'. Symbols loaded.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Services.Remoting.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\SfDevCluster\Data\_App\_Node_0\Sample.UTILS.LoggingType_App9\Sample.Service.UTILS.Logging.Code.1.0.0\Microsoft.ServiceFabric.Internal.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Numerics\v4.0_4.0.0.0__b77a5c561934e089\System.Numerics.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Fabric.Strings\v4.0_6.0.0.0__31bf3856ad364e35\System.Fabric.Strings.dll'. Cannot find or open the PDB file.
+'Sample.Service.UTILS.Logging.exe' (CLR v4.0.30319: Sample.Service.UTILS.Logging.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Cannot find or open the PDB file.

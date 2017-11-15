@@ -1,39 +1,29 @@
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.5Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":null,"""ConfigPackageName""":null,"""ConfigPackageLinkFolder""":null,"""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":null,"""WorkingFolder""":null,"""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":"""C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe""","""DebugArguments""":""" {a910f745-9ef0-471d-bd7e-4d8d5574db6d} -p [ProcessId] -tid [ThreadId]""","""DebugParametersFile""":null}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/Sample.UTILS.Logging
+ApplicationTypeName    : Sample.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":null,"ConfigPackageNam
+                         e":null,"ConfigPackageLinkFolder":null,"DataPackageName":null,"DataPackageLinkFolder":null,"Lo
+                         ckFile":null,"WorkingFolder":null,"ServiceManifestName":"Sample.Service.UTILS.Logging","EntryP
+                         ointType":"Main","DebugExePath":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Profe
+                         ssional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe","DebugArguments":" {a910f745-9e
+                         f0-471d-bd7e-4d8d5574db6d} -p [ProcessId] -tid [ThreadId]","DebugParametersFile":null}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:10.4810404
 Started executing script 'Get-ServiceFabricApplicationStatus'.
 [void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
 The application has started.
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
-Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
-
 Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
@@ -48,10 +38,10 @@ fabric:/Sample.UTILS.Logging/Logging is ready.
 
 The application is ready.
 Finished executing script 'Get-ServiceFabricApplicationStatus'.
-Time elapsed: 00:00:34.6613327
+Time elapsed: 00:00:12.1196147
 The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
 Started executing script 'Publish-NewServiceFabricApplication'.
-[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.1Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64""","""ConfigPackageName""":"""Config""","""ConfigPackageLinkFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\PackageRoot\\Config""","""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt""","""WorkingFolder""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging""","""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":null,"""DebugArguments""":null,"""DebugParametersFile""":"""C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"""}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.5Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":null,"""ConfigPackageName""":null,"""ConfigPackageLinkFolder""":null,"""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":null,"""WorkingFolder""":null,"""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":"""C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe""","""DebugArguments""":""" {944ef94e-0d14-4081-a05b-07ea7c8d9f45} -p [ProcessId] -tid [ThreadId]""","""DebugParametersFile""":null}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
 Creating application...
 
 
@@ -59,16 +49,12 @@ ApplicationName        : fabric:/Sample.UTILS.Logging
 ApplicationTypeName    : Sample.UTILS.LoggingType
 ApplicationTypeVersion : 1.0.0
 ApplicationParameters  : { "TargetReplicaSetSize" = "1";
-                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":"C:\\Work\\_temp\\sf-s
-                         tatefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\Debug\\net462\\win7-x64","Config
-                         PackageName":"Config","ConfigPackageLinkFolder":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sa
-                         mple.Service.UTILS.Logging\\PackageRoot\\Config","DataPackageName":null,"DataPackageLinkFolder
-                         ":null,"LockFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bi
-                         n\\x64\\Debug\\net462\\win7-x64\\_VS_ServiceFabric_lock.txt","WorkingFolder":"C:\\Work\\_temp\
-                         \sf-statefull-sample\\src\\Sample.Service.UTILS.Logging","ServiceManifestName":"Sample.Service
-                         .UTILS.Logging","EntryPointType":"Main","DebugExePath":null,"DebugArguments":null,"DebugParame
-                         tersFile":"C:\\Work\\_temp\\sf-statefull-sample\\src\\Sample.Service.UTILS.Logging\\bin\\x64\\
-                         Debug\\net462\\win7-x64\\_VS_ServiceFabric_debug.txt"}]";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":null,"ConfigPackageNam
+                         e":null,"ConfigPackageLinkFolder":null,"DataPackageName":null,"DataPackageLinkFolder":null,"Lo
+                         ckFile":null,"WorkingFolder":null,"ServiceManifestName":"Sample.Service.UTILS.Logging","EntryP
+                         ointType":"Main","DebugExePath":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Profe
+                         ssional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe","DebugArguments":" {944ef94e-0d
+                         14-4081-a05b-07ea7c8d9f45} -p [ProcessId] -tid [ThreadId]","DebugParametersFile":null}]";
                          "MinReplicaSetSize" = "1";
                          "PartitionCount" = "1" }
 
@@ -76,7 +62,7 @@ Create application succeeded.
 
 
 Finished executing script 'Publish-NewServiceFabricApplication'.
-Time elapsed: 00:00:10.3072534
+Time elapsed: 00:00:10.3418958
 Started executing script 'Get-ServiceFabricApplicationStatus'.
 [void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
 The application has started.
@@ -90,8 +76,38 @@ Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
 Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+fabric:/Sample.UTILS.Logging/Logging is ready.
 
+The application is ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:12.1145933
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.5Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":null,"""ConfigPackageName""":null,"""ConfigPackageLinkFolder""":null,"""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":null,"""WorkingFolder""":null,"""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":"""C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe""","""DebugArguments""":""" {5b45954c-d5fa-48a1-8e07-f5621d875c09} -p [ProcessId] -tid [ThreadId]""","""DebugParametersFile""":null}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/Sample.UTILS.Logging
+ApplicationTypeName    : Sample.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":null,"ConfigPackageNam
+                         e":null,"ConfigPackageLinkFolder":null,"DataPackageName":null,"DataPackageLinkFolder":null,"Lo
+                         ckFile":null,"WorkingFolder":null,"ServiceManifestName":"Sample.Service.UTILS.Logging","EntryP
+                         ointType":"Main","DebugExePath":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Profe
+                         ssional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe","DebugArguments":" {5b45954c-d5
+                         fa-48a1-8e07-f5621d875c09} -p [ProcessId] -tid [ThreadId]","DebugParametersFile":null}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:10.4904040
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
+The application has started.
 Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
@@ -102,8 +118,38 @@ Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
 Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+fabric:/Sample.UTILS.Logging/Logging is ready.
 
+The application is ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:12.0100953
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
+Started executing script 'Publish-NewServiceFabricApplication'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Publish-NewServiceFabricApplication -ApplicationPackagePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\pkg\Debug' -ApplicationParameterFilePath 'C:\Work\_temp\sf-statefull-sample\src\Sample.UTILS.Logging\PublishProfiles\..\ApplicationParameters\Local.5Node.xml' -ApplicationParameter @{_WFDebugParams_='[{"""CodePackageName""":"""Code""","""CodePackageLinkFolder""":null,"""ConfigPackageName""":null,"""ConfigPackageLinkFolder""":null,"""DataPackageName""":null,"""DataPackageLinkFolder""":null,"""LockFile""":null,"""WorkingFolder""":null,"""ServiceManifestName""":"""Sample.Service.UTILS.Logging""","""EntryPointType""":"""Main""","""DebugExePath""":"""C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe""","""DebugArguments""":""" {e1c2379b-7825-4a7d-97f4-1934abdfbe2a} -p [ProcessId] -tid [ThreadId]""","""DebugParametersFile""":null}]'} -Action Create -SkipPackageValidation:$true -ErrorAction Stop
+Creating application...
+
+
+ApplicationName        : fabric:/Sample.UTILS.Logging
+ApplicationTypeName    : Sample.UTILS.LoggingType
+ApplicationTypeVersion : 1.0.0
+ApplicationParameters  : { "TargetReplicaSetSize" = "1";
+                         "_WFDebugParams_" = "[{"CodePackageName":"Code","CodePackageLinkFolder":null,"ConfigPackageNam
+                         e":null,"ConfigPackageLinkFolder":null,"DataPackageName":null,"DataPackageLinkFolder":null,"Lo
+                         ckFile":null,"WorkingFolder":null,"ServiceManifestName":"Sample.Service.UTILS.Logging","EntryP
+                         ointType":"Main","DebugExePath":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Profe
+                         ssional\\Common7\\Packages\\Debugger\\VsDebugLaunchNotify.exe","DebugArguments":" {e1c2379b-78
+                         25-4a7d-97f4-1934abdfbe2a} -p [ProcessId] -tid [ThreadId]","DebugParametersFile":null}]";
+                         "MinReplicaSetSize" = "1";
+                         "PartitionCount" = "1" }
+
+Create application succeeded.
+
+
+Finished executing script 'Publish-NewServiceFabricApplication'.
+Time elapsed: 00:00:10.1415403
+Started executing script 'Get-ServiceFabricApplicationStatus'.
+[void](Connect-ServiceFabricCluster); Import-Module 'C:\Program Files\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1'; Get-ServiceFabricApplicationStatus -ApplicationName 'fabric:/Sample.UTILS.Logging' -ErrorAction Stop
+The application has started.
 Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
@@ -114,5 +160,9 @@ Service Status:
 fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
 
 Service Status:
-fabric:/Sample.UTILS.Logging/Logging is not ready, 1 partitions remaining.
+fabric:/Sample.UTILS.Logging/Logging is ready.
 
+The application is ready.
+Finished executing script 'Get-ServiceFabricApplicationStatus'.
+Time elapsed: 00:00:12.1353924
+The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application.
